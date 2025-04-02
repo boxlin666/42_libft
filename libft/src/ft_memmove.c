@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 10:21:07 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:26:05 by helin            ###   ########.fr       */
+/*   Created: 2025/04/02 10:20:55 by helin             #+#    #+#             */
+/*   Updated: 2025/04/02 11:17:22 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<unistd.h>
+#include "libft.h"
+#include <string.h>
 
-void    ft_putendl(char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    while (*str)
-        write(1, str++, 1);
-    write(1, "\n", 1);
+	unsigned char		*d;
+	const unsigned char	*s = src;
+
+	d = dest;
+	if (d < s)
+	{
+		while (n--)
+			*d++ = *s++;
+	}
+	else
+	{
+		d += n;
+		s += n;
+		while (n--)
+			*--d = *--s;
+	}
+	return (dest);
 }

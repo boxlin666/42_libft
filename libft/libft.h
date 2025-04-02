@@ -48,10 +48,10 @@ void    ft_putnbr_fd(int n, int fd);
 char    *ft_strjoin(const char *s1, const char *s2);
 char    *ft_strtrim(const char *s);
 char    *ft_strsub(const char *s, unsigned int start, size_t len);
-char    *ft_strsplit(const char *s, char c);
+char    **ft_strsplit(const char *s, char c);
 
 // Memory management functions
-void    ft_memmove(void *dest, const void *src, size_t len);
+void    *ft_memmove(void *dest, const void *src, size_t len);
 void    ft_strdel(char **as);
 void    ft_striter(char *s, void (*f)(char *));
 void    ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -67,8 +67,6 @@ int     ft_toupper(int c);
 int     ft_strnequ(const char *s1, const char *s2, size_t n);
 char    *ft_strnew(size_t size);
 char    *ft_strnstr(const char *haystack, const char *needle, size_t len);
-int     ft_striteri(char *s, void (*f)(unsigned int, char *));
 void    ft_strclr(char *s);
 void    ft_striter(char *s, void (*f)(char *));
-int     ft_strsplit(const char *s, char c);
 #endif

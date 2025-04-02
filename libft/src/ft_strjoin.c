@@ -6,15 +6,13 @@
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:44 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:29:56 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/02 12:06:57 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<string.h>
 #include<stdlib.h>
 #include"libft.h"
-
-int ft_strlen(const char *s);
 
 char* ft_strjoin(char const *s1, char const *s2)
 {

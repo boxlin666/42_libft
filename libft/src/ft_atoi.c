@@ -6,41 +6,41 @@
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:20:03 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:24:37 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/02 13:53:01 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_isspace(int c)
+static int	ft_isspace(int c)
 {
-    return (c == ' ' || c == '\t' || c == '\n' ||
-            c == '\v' || c == '\f' || c == '\r');
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r');
 }
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-    int sign = 1;
-    int result = 0;
+	int		sign;
+	long	result;
 
-    // Skip whitespace
-    while (*str && ft_isspace((unsigned char)*str))
-        str++;
-
-    // Handle sign
-    if (*str == '-' || *str == '+')
-    {
-        if (*str == '-')
-            sign = -1;
-        str++;
-    }
-
-    // Convert digits to integer
-    while (*str && isdigit((unsigned char)*str))
-    {
-        result = result * 10 + (*str - '0');
-        str++;
-    }
-
-    return result * sign;
+	sign = 1;
+	result = 0;
+	while (*str && ft_isspace((unsigned char)*str))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str && ft_isdigit((unsigned char)*str))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+        if (result * sign > 2147483647)
+            return 2147483647;
+        if (result * sign < -2147483648)
+            return -2147483648;
+	}
+	return (result * sign);
 }

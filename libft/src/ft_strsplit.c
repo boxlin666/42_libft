@@ -6,13 +6,47 @@
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:48 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:30:41 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/02 12:52:27 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<string.h>
 #include<stdlib.h>
 #include"libft.h"
+
+static int ft_count_words(char const *s, char c)
+{
+    int count;
+    int i;
+
+    count = 0;
+    i = 0;
+    while (s[i])
+    {
+        while (s[i] == c)
+            i++;
+        if (s[i] && s[i] != c)
+        {
+            count++;
+            while (s[i] && s[i] != c)
+                i++;
+        }
+    }
+    return (count);
+}
+
+static int ft_word_len(char const *s, char c, int i)
+{
+    int len;
+
+    len = 0;
+    while (s[i] && s[i] != c)
+    {
+        len++;
+        i++;
+    }
+    return (len);
+}
 
 char **ft_strsplit(char const *s, char c)
 {

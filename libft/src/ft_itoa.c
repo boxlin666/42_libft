@@ -6,14 +6,14 @@
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:20:33 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:25:26 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/02 13:33:28 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include<stdlib.h>
 
-void ft_fillstr(int n, char* str, int len)
+static void ft_fillstr(int n, char* str, int len)
 {
     if (n < 0)
         str[0] = '-';

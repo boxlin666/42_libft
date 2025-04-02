@@ -6,13 +6,13 @@
 /*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:18 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:30:02 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/02 12:50:53 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-int ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
     int i;
 
