@@ -1,0 +1,16 @@
+# 忽略编译生成的文件
+libft.a
+test
+
+# 忽略对象文件
+obj/
+
+# 忽略代码覆盖率相关文件
+*.gcda
+*.gcno
+
+# 忽略编辑器和操作系统的临时文件
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
