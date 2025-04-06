@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:20:33 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 16:28:11 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 13:53:07 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	ft_intlen(long n)
 	}
 	return (len);
 }
+
 static void	ft_fillstr(long n, char *str, int len)
 {
 	str[len] = '\0';
@@ -48,8 +49,9 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
+	long	num;
 
-	long num = n; // Use long to safely handle INT_MIN
+	num = n;
 	len = ft_intlen(num);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)

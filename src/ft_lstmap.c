@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 15:10:34 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 15:11:12 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 13:53:16 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new_list;
-	t_list *current;
+	t_list	*new_list;
+	t_list	*current;
 
 	if (!lst || !f)
 		return (NULL);

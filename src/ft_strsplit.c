@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:48 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 10:12:17 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 13:53:46 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_word_len(char const *s, char c, int i)
 	return (len);
 }
 
-static char *ft_get_word(char const *s, char c, int *i)
+static char	*ft_get_word(char const *s, char c, int *i)
 {
 	int		len;
 	char	*word;
@@ -67,7 +67,7 @@ static char *ft_get_word(char const *s, char c, int *i)
 
 char	**ft_strsplit(char const *s, char c)
 {
-	char **result;
+	char	**result;
 	int		i;
 	int		j;
 	int		word_count;

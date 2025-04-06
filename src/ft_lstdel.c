@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 15:04:34 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 15:11:06 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 13:53:38 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list *current;
-	t_list *next;
+	t_list	*current;
+	t_list	*next;
 
 	if (alst && *alst && del)
 	{
