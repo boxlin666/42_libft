@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:44 by helin             #+#    #+#             */
-/*   Updated: 2025/04/03 18:52:28 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 14:41:41 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	i;
+	int			i;
+	unsigned char	uc;
 
+	uc = (unsigned char)c;
 	i = ft_strlen(s);
-	while (i > 0)
+	while (i >= 0)
 	{
-		if (s[i] == c)
+		if ((unsigned char)s[i] == uc)
 			return ((char *)&s[i]);
 		i--;
 	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
 	return (NULL);
 }
+

@@ -289,10 +289,24 @@ Test(ft_strchr, basic_and_extended)
         cr_assert_null(ft_strchr("Hello", 'x'), "Expected: NULL when char not found");
     }
     {
+        cr_assert_null(ft_strchr("", 'o'), "Expected: NULL");
+    }
+    {
         char str[] = "Hello World";
         char *p = ft_strchr(str, 'H');
         cr_assert_not_null(p, "Expected non-null pointer for 'H'");
         cr_assert_str_eq(p, "Hello World", "Expected: Hello World; Got: %s", p);
+    }
+    {
+        char *s = "hello world";
+        cr_assert_eq(ft_strchr(s, 'h'), s);
+        cr_assert_eq(ft_strchr(s, 'w'), s + 6);
+        cr_assert_eq(ft_strchr(s, '\0'), s + strlen(s));
+        cr_assert_eq(ft_strchr(s, 'z'), NULL);
+    }
+    {
+        char *s = "abc";
+        cr_assert_eq(ft_strchr(s, 'a' + 256), ft_strchr(s, (char)('a' + 256)));
     }
 }
 
@@ -327,6 +341,13 @@ Test(ft_strstr, basic_and_extended)
         char *p = ft_strstr(str, "Hello");
         cr_assert_not_null(p, "Expected non-null pointer for substring 'Hello'");
         cr_assert_str_eq(p, "Hello World", "Expected: Hello World; Got: %s", p);
+    }
+    {
+        char *s = "banana";
+    cr_assert_eq(ft_strrchr(s, 'a'), s + 5);
+    cr_assert_eq(ft_strrchr(s, 'b'), s);
+    cr_assert_eq(ft_strrchr(s, 'z'), NULL);
+    cr_assert_eq(ft_strrchr(s, '\0'), s + strlen(s));
     }
 }
 
@@ -631,6 +652,23 @@ Test(ft_strsub, basic_and_extended)
         cr_assert_str_eq(result, "World", "Expected: World; Got: %s", result);
         free(result);
     }
+    {
+        char *s = ft_strsub("hello world", 0, 5);
+        cr_assert_str_eq(s, "hello");
+        free(s);
+
+        s = ft_strsub("hello world", 6, 5);
+        cr_assert_str_eq(s, "world");
+        free(s);
+
+        s = ft_strsub("42", 0, 0);
+        cr_assert_str_eq(s, "");
+        free(s);
+
+        s = ft_strsub("test", 10, 5);
+        cr_assert_str_eq(s, "");
+        free(s);
+    }
 }
 
 /* -------------------------- ft_strjoin -------------------------- */
@@ -668,6 +706,23 @@ Test(ft_strtrim, basic_and_extended)
         cr_assert_not_null(result, "Expected non-null result");
         cr_assert_str_eq(result, "Hello", "Expected: Hello; Got: %s", result);
         free(result);
+    }
+    {
+        char *s = ft_strtrim("   hello world   ");
+    cr_assert_str_eq(s, "hello world");
+    free(s);
+
+    s = ft_strtrim("no_trim");
+    cr_assert_str_eq(s, "no_trim");
+    free(s);
+
+    s = ft_strtrim("   \t\n  ");
+    cr_assert_str_eq(s, "");
+    free(s);
+
+    s = ft_strtrim("");
+    cr_assert_str_eq(s, "");
+    free(s);
     }
 }
 
@@ -795,7 +850,7 @@ Test(ft_lstnew, basic)
         char *content = strdup("Hello");
         t_list *node = ft_lstnew(content, strlen(content) + 1);
         cr_assert_not_null(node, "Expected non-null node");
-        cr_assert_str_eq((char*)node->content, "Hello", "Expected node content: Hello");
+        cr_assert_str_eq((char *)node->content, "Hello", "Expected node content: Hello");
         cr_assert_eq(node->content_size, strlen("Hello") + 1, "Expected node content_size: %zu", strlen("Hello") + 1);
         free(node->content);
         free(node);
@@ -862,11 +917,11 @@ Test(ft_lstiter, basic)
         t_list *node2 = ft_lstnew(&b, sizeof(int));
         node1->next = node2;
         /* 预先将内容初始化为 0 */
-        *((int*)node1->content) = 0;
-        *((int*)node2->content) = 0;
+        *((int *)node1->content) = 0;
+        *((int *)node2->content) = 0;
         ft_lstiter(node1, count_func);
-        cr_assert_eq(*((int*)node1->content), 1, "Expected first node counter to be 1");
-        cr_assert_eq(*((int*)node2->content), 1, "Expected second node counter to be 1");
+        cr_assert_eq(*((int *)node1->content), 1, "Expected first node counter to be 1");
+        cr_assert_eq(*((int *)node2->content), 1, "Expected second node counter to be 1");
         free(node1->content);
         free(node2->content);
         free(node1);
@@ -891,8 +946,8 @@ Test(ft_lstmap, basic)
         node1->next = node2;
         t_list *mapped = ft_lstmap(node1, clone_node);
         cr_assert_not_null(mapped, "Expected non-null mapped list");
-        cr_assert_str_eq((char*)mapped->content, "Hello", "Expected first node: Hello");
-        cr_assert_str_eq((char*)mapped->next->content, "World", "Expected second node: World");
+        cr_assert_str_eq((char *)mapped->content, "Hello", "Expected first node: Hello");
+        cr_assert_str_eq((char *)mapped->next->content, "World", "Expected second node: World");
         free(node1->content);
         free(node2->content);
         free(node1);

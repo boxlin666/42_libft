@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:55 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 10:29:21 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/06 14:52:19 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,20 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*sub;
+	size_t	src_len;
 
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
+	if (!s)
 		return (NULL);
-	str = ft_strncpy(str, s + start, len);
-	return (str);
+	src_len = strlen(s);
+	if (start >= src_len)
+		len = 0;
+	else if (start + len > src_len)
+		len = src_len - start;
+	sub = (char *)malloc(len + 1);
+	if (!sub)
+		return (NULL);
+	memcpy(sub, s + start, len);
+	sub[len] = '\0';
+	return (sub);
 }
