@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:20:03 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 13:53:01 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/05 09:54:21 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ int	ft_atoi(const char *str)
 	{
 		result = result * 10 + (*str - '0');
 		str++;
-        if (result * sign > 2147483647)
-            return 2147483647;
-        if (result * sign < -2147483648)
-            return -2147483648;
 	}
-	return (result * sign);
+	return ((int)(sign * result));
 }

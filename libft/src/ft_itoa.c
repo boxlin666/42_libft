@@ -3,47 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:20:33 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 13:33:28 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/05 16:28:11 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<stdlib.h>
+#include <stdlib.h>
 
-static void ft_fillstr(int n, char* str, int len)
+static int	ft_intlen(long n)
 {
-    if (n < 0)
-        str[0] = '-';
-    if (n == 0)
-        str[0] = '0';
-    while (n)    
-    {
-        if (n < 0)
-            str[--len] = -(n % 10) + '0';
-        else
-            str[--len] = n % 10 + '0';
-        n /= 10;
-    }
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+static void	ft_fillstr(long n, char *str, int len)
+{
+	str[len] = '\0';
+	if (n == 0)
+		str[0] = '0';
+	if (n < 0)
+	{
+		str[0] = '-';
+		n = -n;
+	}
+	while (n > 0)
+	{
+		str[--len] = (n % 10) + '0';
+		n /= 10;
+	}
 }
 
-char* ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-    char* str;
-    int len;
-    int temp;
+	char	*str;
+	int		len;
 
-    len = 1;
-    temp = n;
-    while (temp /= 10)
-        len++;
-    if (n < 0)
-        len++;
-    if (!(str = (char*)malloc(sizeof(char) * (len + 1))))
-        return (NULL);
-    str[len] = '\0';
-    ft_fillstr(n, str, len);
-    return (str);
+	long num = n; // Use long to safely handle INT_MIN
+	len = ft_intlen(num);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	ft_fillstr(num, str, len);
+	return (str);
 }

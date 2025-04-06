@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:06 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 11:23:21 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/03 18:47:42 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<unistd.h>
+#include <unistd.h>
 
-void    ft_putendl_fd(const char *s, int fd)
+void	ft_putendl_fd(const char *s, int fd)
 {
-    while (*s)
-        write(fd, s++, 1);
-    write(fd, "\n", 1);
+	while (*s)
+		write(fd, s++, 1);
+	write(fd, "\n", 1);
 }

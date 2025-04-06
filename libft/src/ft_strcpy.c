@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:27 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 12:06:37 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/03 18:45:37 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<string.h>
-#include"libft.h"
+#include "libft.h"
+#include <string.h>
 
-char *ft_strcpy(char *dest, const char *src)
+char	*ft_strcpy(char *dest, const char *src)
 {
-    char *d = dest;
-    const char *s = src;
+	char		*d;
+	const char	*s = src;
 
-    while (*s)
-    {
-        *d = *s;
-        d++;
-        s++;
-    }
-    *d = '\0';
-    return dest;
+	d = dest;
+	while (*s)
+	{
+		*d = *s;
+		d++;
+		s++;
+	}
+	*d = '\0';
+	return (dest);
 }

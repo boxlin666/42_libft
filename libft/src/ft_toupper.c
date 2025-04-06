@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:23:03 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:31:05 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/03 18:42:40 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    if (c >= 'A' && c <= 'Z')
-        return (c + 32);
-    return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

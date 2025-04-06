@@ -1,56 +1,52 @@
-# Makefile for libft project
-
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-
-# The name of the output library
-NAME = libft.a
+CFLAGS = -Wall -Wextra -Werror -I.
 
 # Directories
 SRC_DIR = src
 OBJ_DIR = obj
+TEST_DIR = tests
 INC_DIR = .
 
-# Source files and object files
-SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
-OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
+# Files
+NAME = libft.a
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
+TEST_SRC = $(TEST_DIR)/test1.c
+TEST_EXEC = test_exec
+
+# Default target
+all: $(NAME)
 
 # Create the library
 $(NAME): $(OBJ_FILES)
-	@echo "Creating $(NAME)..."
 	ar rcs $(NAME) $(OBJ_FILES)
-	@echo "$(NAME) created successfully."
 
-# Compile the source files to object files
+# Compile source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) $(COVFLAGS) -c $< -o $@
 
-# Ensure obj directory exists
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	mkdir -p $(OBJ_DIR)
 
-# Clean up object files
+
+# Clean up object files and coverage data
 clean:
-	@echo "Cleaning object files..."
 	rm -rf $(OBJ_DIR)
 
-# Clean everything (objects and the library)
+# Clean everything
 fclean: clean
-	@echo "Removing $(NAME)..."
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST_EXEC)
+	rm -rf $(COV_DIR)
 
 # Rebuild the library
-re: fclean $(NAME)
+re: fclean all
 
-# Run the tests
-TEST = tests/test.c
-TEST_EXEC = test
-
+# Compile and run tests
 test: $(NAME)
-	@echo "Compiling test cases..."
-	$(CC) $(CFLAGS) -I $(INC_DIR) $(TEST) -L. -lft -lcriterion -o $(TEST_EXEC)
-	@echo "Running tests..."
+	$(CC) $(CFLAGS) -I$(INC_DIR) $(TEST_SRC) $(SRC_FILES) -o $(TEST_EXEC) -lcriterion
+	@echo "Running tests ..."
 	./$(TEST_EXEC)
+
 
 .PHONY: all clean fclean re test

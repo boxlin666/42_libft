@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 10:20:55 by helin             #+#    #+#             */
-/*   Updated: 2025/04/05 14:03:27 by helin            ###   ########.fr       */
+/*   Created: 2025/04/05 14:55:25 by helin             #+#    #+#             */
+/*   Updated: 2025/04/05 15:11:14 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 #include <string.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	unsigned char		*d;
-	const unsigned char	*s = src;
+	t_list	*new_node;
 
-	if(!dest && !src)
+	new_node = (t_list *)malloc(sizeof(t_list));
+	if (!new_node)
 		return (NULL);
-	d = dest;
-	if (d < s)
+	if (!content)
 	{
-		while (n--)
-			*d++ = *s++;
+		new_node->content = NULL;
+		new_node->content_size = 0;
 	}
 	else
 	{
-		d += n;
-		s += n;
-		while (n--)
-			*--d = *--s;
+		new_node->content = malloc(content_size);
+		if (!new_node->content)
+		{
+			free(new_node);
+			return (NULL);
+		}
+		memcpy(new_node->content, content, content_size);
+		new_node->content_size = content_size;
 	}
-	return (dest);
+	new_node->next = NULL;
+	return (new_node);
 }

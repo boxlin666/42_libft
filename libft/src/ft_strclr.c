@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:23 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 10:26:42 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/05 14:51:13 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
+#include "libft.h"
 
-void ft_strcle(char* s)
+void	ft_strclr(char *s)
 {
-    while (*s)
-    {
-        *s = '\0';
-        s++;
-    }
+	while (*s)
+	{
+		*s = '\0';
+		s++;
+	}
 }

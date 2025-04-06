@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: helin <boxlin666@gmail.com>                +#+  +:+       +#+        */
+/*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:16 by helin             #+#    #+#             */
-/*   Updated: 2025/04/02 11:24:49 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/03 18:43:06 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include<unistd.h>
+#include "libft.h"
+#include <unistd.h>
 
-void    ft_putstr(const char *s)
+void	ft_putstr(const char *s)
 {
-    while (*s)
-        write(1, s++, 1);
+	while (*s)
+		write(1, s++, 1);
 }
