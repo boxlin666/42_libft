@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 10:22:55 by helin             #+#    #+#             */
-/*   Updated: 2025/04/06 14:52:19 by helin            ###   ########.fr       */
+/*   Created: 2025/04/13 13:47:38 by helin             #+#    #+#             */
+/*   Updated: 2025/04/13 13:48:02 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <string.h>
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+size_t    ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	*sub;
-	size_t	src_len;
+    size_t	i;
 
-	if (!s)
-		return (NULL);
-	src_len = strlen(s);
-	if (start >= src_len)
-		len = 0;
-	else if (start + len > src_len)
-		len = src_len - start;
-	sub = (char *)malloc(len + 1);
-	if (!sub)
-		return (NULL);
-	memcpy(sub, s + start, len);
-	sub[len] = '\0';
-	return (sub);
+    if (!dst || !src)
+        return (0);
+    if (size == 0)
+        return (ft_strlen(src));
+    i = 0;
+    while (i < size - 1 && src[i] != '\0')
+    {
+        dst[i] = src[i];
+        i++;
+    }
+    dst[i] = '\0';
+    return (ft_strlen(src));
 }

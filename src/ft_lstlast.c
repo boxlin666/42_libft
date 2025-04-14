@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 10:22:37 by helin             #+#    #+#             */
-/*   Updated: 2025/04/03 18:51:12 by helin            ###   ########.fr       */
+/*   Created: 2025/04/13 13:53:10 by helin             #+#    #+#             */
+/*   Updated: 2025/04/13 13:53:22 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
+#include <stdlib.h>
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+t_list *ft_lstlast(t_list *lst)
 {
-	if (!s1 || !s2)
-		return (0);
-	return (ft_strncmp(s1, s2, n) == 0);
+    if (!lst)
+        return (NULL);
+    while (lst->next)
+        lst = lst->next;
+    return (lst);
 }

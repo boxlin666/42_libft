@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 15:07:36 by helin             #+#    #+#             */
-/*   Updated: 2025/04/06 13:53:26 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/13 13:55:21 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst && f)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		while (lst)
-		{
-			f(lst);
-			lst = lst->next;
-		}
+		f(lst->content);
+		lst = lst->next;
 	}
 }

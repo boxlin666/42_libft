@@ -6,39 +6,28 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:58 by helin             #+#    #+#             */
-/*   Updated: 2025/04/06 14:50:21 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/13 21:25:52 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-static int	ft_is_whitespace(char c)
+
+char *ft_strtrim(char const *s1, char const *set)
 {
-	return (c == ' ' || c == '\n' || c == '\t');
-}
+	size_t start;
+	size_t end;
+	size_t len;
 
-char *ft_strtrim(char const *s)
-{
-	size_t	i;
-	size_t	j;
-	char	*str;
-
-	if (!s)
+	if (!s1 || !set)
 		return (NULL);
-
-	i = 0;
-	while (ft_is_whitespace(s[i]))
-		i++;
-
-	j = strlen(s);
-	while (j > i && ft_is_whitespace(s[j - 1]))
-		j--;
-
-	str = (char *)malloc(j - i + 1);
-	if (!str)
-		return (NULL);
-	memcpy(str, s + i, j - i);
-	str[j - i] = '\0';
-	return (str);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	len = end - start;
+	return (ft_substr(s1, start, len));
 }

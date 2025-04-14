@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/02 10:21:31 by helin             #+#    #+#             */
-/*   Updated: 2025/04/03 18:47:39 by helin            ###   ########.fr       */
+/*   Created: 2025/04/13 14:23:13 by helin             #+#    #+#             */
+/*   Updated: 2025/04/13 21:39:13 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <string.h>
 
-void	ft_strdel(char **as)
+
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	free(*as);
-	*as = NULL;
+	void	*ptr;
+	if (size != 0 && nmemb > SIZE_MAX / size)
+		return (NULL);
+
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size); 
+	return (ptr);
 }
