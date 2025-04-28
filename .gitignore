@@ -1,7 +1,7 @@
 # 忽略编译生成的文件
 libft.a
 test_exec
-
+main.c
 # 忽略对象文件
 obj/
 
