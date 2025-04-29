@@ -6,15 +6,15 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:23:00 by helin             #+#    #+#             */
-/*   Updated: 2025/04/03 18:53:54 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/29 09:56:45 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
 	return (c);
 }

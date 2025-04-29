@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:21:06 by helin             #+#    #+#             */
-/*   Updated: 2025/04/28 12:00:36 by helin            ###   ########.fr       */
+/*   Updated: 2025/04/29 16:14:35 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	while (*s)
-		write(fd, s++, 1);
+	write(fd, s, ft_strlen(s));
 	write(fd, "\n", 1);
 }
