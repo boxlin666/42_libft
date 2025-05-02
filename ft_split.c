@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:48 by helin             #+#    #+#             */
-/*   Updated: 2025/04/29 16:12:05 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/02 11:21:44 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char	*ft_get_word(char const *s, char c, int *i)
 	word = (char *)malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
-	ft_strlcpy(word, &s[*i], len);
+	ft_strlcpy(word, &s[*i], len + 1);
 	word[len] = '\0';
 	*i += len;
 	return (word);
