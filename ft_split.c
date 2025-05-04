@@ -6,7 +6,7 @@
 /*   By: helin <helin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 10:22:48 by helin             #+#    #+#             */
-/*   Updated: 2025/05/02 17:37:11 by helin            ###   ########.fr       */
+/*   Updated: 2025/05/04 16:54:57 by helin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ char	**ft_split(char const *s, char c)
 		result[j++] = ft_get_word(s, c, &i);
 		if (!result[j - 1])
 		{
-			while (result[--j])
-				free(result[j]);
+			j = 0;
+			while (result[j])
+				free(result[j++]);
 			free(result);
 			return (NULL);
 		}
